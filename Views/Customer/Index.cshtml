@@ -1,0 +1,35 @@
+﻿@model ICollection<Asm2.Models.Customer>
+
+<div class="container col-md-8 text-center mt-3">
+    <h1 class="text text-danger">Customer List</h1>
+    <h4 class="text text-info">Total customer: @ViewData["total"]</h4>
+    <a class="btn btn-primary" asp-action="Create">Create</a>
+    <table class="table table-primary mt-3">
+        <tr>
+            <th>Customer Id</th>
+            <th> Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Actions</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+           <tr>
+               <td>@item.CustomerId</td>
+               <td>@item.Name</td>
+               <td>@item.Email</td>
+               <td>@item.Phone</td>
+               <td>@item.Address</td>
+               <td>
+                   <a class="btn btn-info" asp-action="Detail" asp-route-id="@item.CustomerId">Detail</a>
+                   <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a>
+                   <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CustomerId"
+                   onclick="return confirm('Are you sure you want to delete this customer ?');">
+                   Delete</a>
+               </td>
+           </tr>
+        }
+    </table>
+    
+</div>
